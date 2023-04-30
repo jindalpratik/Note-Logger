@@ -1,0 +1,176 @@
+/* Reset CSS */
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+/* Global Styles */
+body {
+	font-family: 'Open Sans', sans-serif;
+	color: #333;
+	background-color: #f2f2f2;
+	line-height: 1.5;
+}
+
+.container {
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+
+/* Header Styles */
+.header {
+	background-color: #333;
+	color: #fff;
+	padding: 20px 0;
+}
+
+.header__title {
+	font-size: 2rem;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.header__nav ul {
+	list-style: none;
+	display: flex;
+}
+
+.header__nav li {
+	margin-right: 20px;
+}
+
+.header__nav a {
+	color: #fff;
+	text-decoration: none;
+	font-size: 1.2rem;
+}
+
+.header__nav a:hover {
+	color: #f2f2f2;
+}
+
+/* Main Styles */
+.main {
+	margin-top: 50px;
+}
+
+.main__title {
+	font-size: 1.8rem;
+	margin-bottom: 20px;
+}
+
+.main__form {
+	background-color: #fff;
+	padding: 20px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	margin-bottom: 30px;
+}
+
+.form__group {
+	margin-bottom: 20px;
+}
+
+.form__label {
+	display: block;
+	font-size: 1.2rem;
+	margin-bottom: 5px;
+}
+
+.form__input,
+.form__select,
+.form__textarea {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 1.2rem;
+}
+
+.form__input:focus,
+.form__select:focus,
+.form__textarea:focus {
+	border-color: #333;
+}
+
+.form__select option {
+	color: #333;
+}
+
+.form__textarea {
+	resize: none;
+	height: 150px;
+}
+
+.form__button {
+	background-color: #333;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	font-size: 1.2rem;
+	cursor: pointer;
+}
+
+.form__button:hover {
+	background-color: #f2f2f2;
+	color: #333;
+}
+
+.notes__title {
+	font-size: 1.8rem;
+	margin-bottom: 20px;
+}
+
+.notes__list {
+	list-style: none;
+}
+
+.note {
+	background-color: #fff;
+	padding: 20px;
+	margin-bottom: 30px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	position: relative;
+}
+
+.note__header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.note__title {
+	font-size: 1.4rem;
+	font-weight: 600;
+}
+
+.note__buttons button {
+	background-color: transparent;
+	color: #333;
+	border: none;
+	font-size: 1.2rem;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+.note__buttons button:hover {
+	color: #f2f2f2;
+}
+
+.note__category {
+	font-size: 1.2rem;
+	margin-bottom: 5px;
+}
+
+.note__content {
+	font-size: 1.2rem;
+}
+
+/* Footer Styles */
+.footer {
+	background-color: #333;
+	color: #f2f2f2;
+	padding: 20px; }
