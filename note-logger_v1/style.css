@@ -14,8 +14,8 @@ body {
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
-h1 {
-  font-size: 48px;
+h2 {
+  font-size: 36px;
   font-weight: bold;
   margin-bottom: 20px;
   text-align: center;
@@ -59,6 +59,11 @@ button:hover {
 
 ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 li {
@@ -69,6 +74,9 @@ li {
   background-color: #F5F7FA; /* Light blue-gray */
   color: #333;
   font-size: 14px;
+  text-align: left;
+  word-wrap: break-word;
+  max-width: 100%;
   transition: all 0.3s ease-in-out;
 }
 
