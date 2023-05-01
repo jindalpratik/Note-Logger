@@ -1,9 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* Main content */
 body {
   background-color: #F5F7FA; /* Light blue-gray */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -81,4 +76,12 @@ li:hover {
   border-color: #007BFF; /* Blue */
   background-color: #FFFFFF; /* White */
   color: #007BFF; /* Blue */
+}
+
+/* Footer */
+footer {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #999;
 }
