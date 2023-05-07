@@ -67,6 +67,24 @@ ul {
 }
 
 li {
+  position: relative; /* Make the position of the li element relative */
+  border: 2px solid #AEBACF;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #F5F7FA;
+  color: #333;
+  font-size: 14px;
+  text-align: left;
+  word-wrap: break-word;
+  max-width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border: 2px solid #AEBACF; /* Light blue-gray */
   border-radius: 5px;
   padding: 10px;
@@ -85,6 +103,26 @@ li:hover {
   background-color: #FFFFFF; /* White */
   color: #007BFF; /* Blue */
 }
+
+.note-buttons {
+  display: flex;
+  align-items: right;
+}
+
+.note-buttons button {
+  background-color: transparent;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  color: black;
+}
+
+.note-buttons button:hover {
+  color: #007BFF; /* Blue */
+}
+
+
 
 /* Footer */
 footer {
