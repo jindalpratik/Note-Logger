@@ -66,20 +66,6 @@ ul {
   align-items: center;
 }
 
-li {
-  position: relative; /* Make the position of the li element relative */
-  border: 2px solid #AEBACF;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: #F5F7FA;
-  color: #333;
-  font-size: 14px;
-  text-align: left;
-  word-wrap: break-word;
-  max-width: 100%;
-  transition: all 0.3s ease-in-out;
-}
 
 li {
   display: flex;
@@ -101,27 +87,44 @@ li {
 li:hover {
   border-color: #007BFF; /* Blue */
   background-color: #FFFFFF; /* White */
-  color: #007BFF; /* Blue */
 }
 
 .note-buttons {
   display: flex;
-  align-items: right;
+  margin-left: 5px;
 }
 
 .note-buttons button {
   background-color: transparent;
   border: none;
+  margin: 1px;
   font-size: 14px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  color: black;
+  color: #333;
+  background-color: #F5F7FA;
+  border: 2px solid #AEBACF; 
+  line-height: 2px;
+  padding: 7px;
 }
 
-.note-buttons button:hover {
-  color: #007BFF; /* Blue */
+.edit-button {
+  border-radius: 10px 2px 2px 10px;
 }
 
+.delete-button {
+  border-radius: 2px 10px 10px 2px;
+}
+
+.edit-button:hover {
+  border-color: #dfb109;
+  color: #dfb109;
+}
+
+.delete-button:hover {
+  border-color: #ee3b0e;
+  color: #ff3300;
+}
 
 
 /* Footer */
