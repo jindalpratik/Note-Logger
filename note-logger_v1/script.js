@@ -17,6 +17,26 @@ function addNote() {
   // Add note to list
   const li = document.createElement('li');
   li.textContent = text;
+
+
+  // Creating the elements and their classes.
+  const div = document.createElement('div');
+  div.setAttribute("class","note-buttons");
+  const editButton = document.createElement('button');
+  editButton.setAttribute("class","edit-button");
+  const deleteButton = document.createElement('button');
+  deleteButton.setAttribute("class","delete-button");
+  const editButtonIcon = document.createElement('i');
+  editButtonIcon.setAttribute("class","fas fa-edit");
+  const deleteButtonIcon = document.createElement('i');
+  deleteButtonIcon.setAttribute("class","fas fa-trash-alt");
+  
+  // Adding the note to the html with the buttons included.
+  editButton.appendChild(editButtonIcon);
+  deleteButton.appendChild(deleteButtonIcon);
+  div.appendChild(editButton);
+  div.appendChild(deleteButton);
+  li.appendChild(div);
   noteList.appendChild(li);
 
   // Clear input
