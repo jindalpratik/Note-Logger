@@ -69,7 +69,6 @@ ul {
 li {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   border: 2px solid #aebacf; /* Light blue-gray */
   border-radius: 5px;
   padding: 10px;
@@ -78,9 +77,12 @@ li {
   color: #333;
   font-size: 14px;
   text-align: left;
+  font-family: Helvetica, Arial, sans-serif;
   word-wrap: break-word;
+  width: 100%;
   max-width: 100%;
   transition: all 0.3s ease-in-out;
+  white-space: pre-wrap;
 }
 
 li:hover {
@@ -90,6 +92,7 @@ li:hover {
 
 .note-buttons {
   display: flex;
+  align-items: start;
   margin-left: 5px;
 }
 
