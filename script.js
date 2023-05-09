@@ -65,7 +65,6 @@ function addNote() {
 
   //Store the notes in browser storage
   localStorage.setItem("notes", JSON.stringify(notes));
-  console.log(localStorage.getItem("notes"));
   localStorage.setItem("id", id);
 }
 
