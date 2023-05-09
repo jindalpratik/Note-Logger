@@ -5,6 +5,14 @@ body {
   color: #333;
 }
 
+nav {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #999;
+}
+
+
 .container {
   max-width: 600px;
   margin: 0 auto;
