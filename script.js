@@ -20,7 +20,7 @@ function addNote() {
 
   // Add note to list
   const li = document.createElement("li");
-  li.setAttribute("id","parent-"+id);
+  li.setAttribute("id", "parent-" + id);
   li.textContent = text;
 
   // Creating the elements and their classes.
@@ -30,8 +30,8 @@ function addNote() {
   editButton.setAttribute("class", "edit-button");
   const deleteButton = document.createElement("button");
   deleteButton.setAttribute("class", "delete-button");
-  deleteButton.setAttribute("id",id);
-  deleteButton.setAttribute("onclick","delete_note(id);");
+  deleteButton.setAttribute("id", id);
+  deleteButton.setAttribute("onclick", "delete_note(id);");
 
   const editButtonIcon = document.createElement("i");
   editButtonIcon.setAttribute("class", "fas fa-edit");
@@ -57,8 +57,8 @@ noteForm.addEventListener("submit", function (event) {
 
 // Delete note.
 function delete_note(del_id) {
-  parentId = "parent-"+del_id
+  parentId = "parent-" + del_id;
   const li = document.getElementById(parentId);
-  li.remove();  
+  li.remove();
   delete notes[del_id];
 }
