@@ -2,8 +2,14 @@ const noteForm = document.querySelector("#note-form");
 const noteInput = document.querySelector("#note-input");
 const noteList = document.querySelector("#note-list");
 
+localStorage.clear();
 let notes = {};
 let id = 0;
+
+if(!(localStorage.getItem('notes') === null)) {
+  notes = JSON.parse(localStorage.getItem('notes'));
+  id = Number(localStorage.getItem('id'));
+}
 
 function addNote() {
   // Get note text
@@ -48,6 +54,10 @@ function addNote() {
 
   // Clear input
   noteInput.value = "";
+
+  localStorage.setItem('notes', JSON.stringify(notes));
+  console.log(localStorage.getItem('notes'));
+  localStorage.setItem('id',id);
 }
 
 noteForm.addEventListener("submit", function (event) {
@@ -61,4 +71,6 @@ function delete_note(del_id) {
   const li = document.getElementById(parentId);
   li.remove();
   delete notes[del_id];
+
+  localStorage.setItem('notes', JSON.stringify(notes));
 }
