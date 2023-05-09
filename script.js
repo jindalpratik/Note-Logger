@@ -48,5 +48,7 @@ noteForm.addEventListener("submit", function (event) {
 });
 
 function delete_li(id) {
-  console.log(id)
+  parentId = "parent-"+id
+  const li = document.getElementById(parentId);
+  li.remove();  
 }
