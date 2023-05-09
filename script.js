@@ -84,18 +84,17 @@ function delete_note(del_id) {
 }
 
 // Allow tabs in the notes.
-document.getElementById('note-input').addEventListener('keydown', function(e) {
-  if (e.key == 'Tab') {
+document.getElementById("note-input").addEventListener("keydown", function (e) {
+  if (e.key == "Tab") {
     e.preventDefault();
     var start = this.selectionStart;
     var end = this.selectionEnd;
 
     // set note-input value to: text before caret + tab + text after caret
-    this.value = this.value.substring(0, start) +
-      "\t" + this.value.substring(end);
+    this.value =
+      this.value.substring(0, start) + "\t" + this.value.substring(end);
 
     // put caret at right position again
-    this.selectionStart =
-      this.selectionEnd = start + 1;
+    this.selectionStart = this.selectionEnd = start + 1;
   }
 });
