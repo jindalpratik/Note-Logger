@@ -5,16 +5,15 @@ const noteList = document.querySelector("#note-list");
 let notes = {};
 let id = 0;
 
-if(!(localStorage.getItem('notes') === null)) {
-  notes = JSON.parse(localStorage.getItem('notes'));
-  id = Number(localStorage.getItem('id'));
+if (!(localStorage.getItem("notes") === null)) {
+  notes = JSON.parse(localStorage.getItem("notes"));
+  id = Number(localStorage.getItem("id"));
 }
 
 // Add notes after browser refresh.
-for(curId in notes) {
+for (curId in notes) {
   addNoteToUl(curId);
 }
-
 
 function addNoteToUl(curId) {
   const li = document.createElement("li");
@@ -65,9 +64,9 @@ function addNote() {
   addNoteToUl(id);
 
   //Store the notes in browser storage
-  localStorage.setItem('notes', JSON.stringify(notes));
-  console.log(localStorage.getItem('notes'));
-  localStorage.setItem('id',id);
+  localStorage.setItem("notes", JSON.stringify(notes));
+  console.log(localStorage.getItem("notes"));
+  localStorage.setItem("id", id);
 }
 
 noteForm.addEventListener("submit", function (event) {
@@ -82,5 +81,5 @@ function delete_note(del_id) {
   li.remove();
   delete notes[del_id];
 
-  localStorage.setItem('notes', JSON.stringify(notes));
+  localStorage.setItem("notes", JSON.stringify(notes));
 }
