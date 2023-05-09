@@ -46,3 +46,7 @@ noteForm.addEventListener("submit", function (event) {
   event.preventDefault();
   addNote();
 });
+
+function delete_li(id) {
+  console.log(id)
+}
