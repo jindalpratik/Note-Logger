@@ -1,56 +1,50 @@
-const noteForm = document.querySelector("#note-form");
-const noteInput = document.querySelector("#note-input");
-const noteList = document.querySelector("#note-list");
+const noteForm = $("#note-form");
+const noteInput = $("#note-input");
+const noteList = $("#note-list");
 
 let notes = {};
 let id = 0;
 
-if (!(localStorage.getItem("notes") === null)) {
+if (localStorage.getItem("notes") !== null) {
   notes = JSON.parse(localStorage.getItem("notes"));
   id = Number(localStorage.getItem("id"));
 }
 
 // Add notes after browser refresh.
-for (curId in notes) {
+$.each(notes, function (curId) {
   addNoteToUl(curId);
-}
+});
 
 function addNoteToUl(curId) {
-  const li = document.createElement("li");
-  li.setAttribute("id", "parent-" + curId);
-  li.textContent = notes[curId];
+  const li = $("<li>")
+    .attr("id", "parent-" + curId)
+    .text(notes[curId]);
 
   // Creating the Buttons and their classes.
-  const div = document.createElement("div");
-  div.setAttribute("class", "note-buttons");
-  const editButton = document.createElement("button");
-  editButton.setAttribute("class", "edit-button");
-  const deleteButton = document.createElement("button");
-  deleteButton.setAttribute("class", "delete-button");
-  deleteButton.setAttribute("id", curId);
-  deleteButton.setAttribute("onclick", "delete_note(id);");
+  const div = $("<div>").addClass("note-buttons");
+  const editButton = $("<button>").addClass("edit-button");
+  const deleteButton = $("<button>")
+    .addClass("delete-button")
+    .attr("id", curId);
 
   // Creating the Button icons and their classes.
-  const editButtonIcon = document.createElement("i");
-  editButtonIcon.setAttribute("class", "fas fa-edit");
-  const deleteButtonIcon = document.createElement("i");
-  deleteButtonIcon.setAttribute("class", "fas fa-trash-alt");
+  const editButtonIcon = $("<i>").addClass("fas fa-edit");
+  const deleteButtonIcon = $("<i>").addClass("fas fa-trash-alt");
 
   // Adding the note to the html with the buttons included.
-  editButton.appendChild(editButtonIcon);
-  deleteButton.appendChild(deleteButtonIcon);
-  div.appendChild(editButton);
-  div.appendChild(deleteButton);
-  li.appendChild(div);
-  noteList.appendChild(li);
+  editButton.append(editButtonIcon);
+  deleteButton.append(deleteButtonIcon);
+  div.append(editButton).append(deleteButton);
+  li.append(div);
+  noteList.append(li);
 
   // Clear input
-  noteInput.value = "";
+  noteInput.val("");
 }
 
 function addNote() {
   // Get note text
-  const text = noteInput.value.trim();
+  const text = noteInput.val().trim();
   if (text === "") {
     return;
   }
@@ -68,31 +62,32 @@ function addNote() {
   localStorage.setItem("id", id);
 }
 
-noteForm.addEventListener("submit", function (event) {
+noteForm.on("submit", function (event) {
   event.preventDefault();
   addNote();
 });
 
 // Delete note.
-function delete_note(del_id) {
-  parentId = "parent-" + del_id;
-  const li = document.getElementById(parentId);
-  li.remove();
+$(document).on("click", ".delete-button", function () {
+  const del_id = $(this).attr("id");
+  const parentId = "#parent-" + del_id;
+  $(parentId).remove();
   delete notes[del_id];
 
   localStorage.setItem("notes", JSON.stringify(notes));
-}
+});
 
 // Allow tabs in the notes.
-document.getElementById("note-input").addEventListener("keydown", function (e) {
+$("#note-input").on("keydown", function (e) {
   if (e.key == "Tab") {
     e.preventDefault();
     var start = this.selectionStart;
     var end = this.selectionEnd;
 
     // set note-input value to: text before caret + tab + text after caret
-    this.value =
-      this.value.substring(0, start) + "\t" + this.value.substring(end);
+    $(this).val(
+      $(this).val().substring(0, start) + "\t" + $(this).val().substring(end)
+    );
 
     // put caret at right position again
     this.selectionStart = this.selectionEnd = start + 1;
