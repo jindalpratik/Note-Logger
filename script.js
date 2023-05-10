@@ -11,17 +11,21 @@ if (localStorage.getItem("notes") !== null) {
 }
 
 // Add notes after browser refresh.
-$.each(notes, function(curId) {
+$.each(notes, function (curId) {
   addNoteToUl(curId);
 });
 
 function addNoteToUl(curId) {
-  const li = $("<li>").attr("id", "parent-" + curId).text(notes[curId]);
+  const li = $("<li>")
+    .attr("id", "parent-" + curId)
+    .text(notes[curId]);
 
   // Creating the Buttons and their classes.
   const div = $("<div>").addClass("note-buttons");
   const editButton = $("<button>").addClass("edit-button");
-  const deleteButton = $("<button>").addClass("delete-button").attr("id", curId);
+  const deleteButton = $("<button>")
+    .addClass("delete-button")
+    .attr("id", curId);
 
   // Creating the Button icons and their classes.
   const editButtonIcon = $("<i>").addClass("fas fa-edit");
@@ -64,7 +68,7 @@ noteForm.on("submit", function (event) {
 });
 
 // Delete note.
-$(document).on("click", ".delete-button", function() {
+$(document).on("click", ".delete-button", function () {
   const del_id = $(this).attr("id");
   const parentId = "#parent-" + del_id;
   $(parentId).remove();
@@ -72,7 +76,6 @@ $(document).on("click", ".delete-button", function() {
 
   localStorage.setItem("notes", JSON.stringify(notes));
 });
-
 
 // Allow tabs in the notes.
 $("#note-input").on("keydown", function (e) {
@@ -82,7 +85,9 @@ $("#note-input").on("keydown", function (e) {
     var end = this.selectionEnd;
 
     // set note-input value to: text before caret + tab + text after caret
-    $(this).val($(this).val().substring(0, start) + "\t" + $(this).val().substring(end));
+    $(this).val(
+      $(this).val().substring(0, start) + "\t" + $(this).val().substring(end)
+    );
 
     // put caret at right position again
     this.selectionStart = this.selectionEnd = start + 1;
