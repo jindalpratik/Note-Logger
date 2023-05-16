@@ -16,10 +16,12 @@ body {
 
 nav {
   max-width: 640px;
-  margin: 0 auto 20px auto;
+  margin: 0 auto 0px auto;
+  clip-path: inset(-10px -10px 0px -10px);
+  border-bottom: 0.1px solid #2b2e32;
   padding: 0px;
   background-color: #ffffff; /* White */
-  border-radius: 10px;
+  border-radius: 10px 10px 0px 0px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);  
   display: flex;
   flex-direction: row;
@@ -27,14 +29,27 @@ nav {
   align-items: center;
 }
 
-#home-button {
+.nav-buttons {
   float: left;
+  background-color: transparent;
+  padding: 5px;
+  border: none;
 }
 
+
+/* 
 #setting-button {
+  background-color: transparent;
+  padding: 5px;
+    border: none;
+  margin-right: 10px;
   float: right;
-}
+} */
 
+#note-elements {
+  clip-path: inset(0px -10px -10px -10px);
+  border-radius: 0px 0px 10px 10px;
+}
 
 h2 {
   font-size: 36px;
@@ -65,7 +80,7 @@ textarea {
 }
 
 #submit-button {
-  background-color: #2b2e32;
+  background-color: #35547e;
   color: #ffffff; /* White */
   border: none;
   border-radius: 5px;
@@ -76,7 +91,7 @@ textarea {
 }
 
 #submit-button:hover {
-  background-color: #0056b3; /* Dark blue */
+  background-color: #0b498b; /* Dark blue */
 }
 
 ul {
