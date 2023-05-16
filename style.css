@@ -27,11 +27,11 @@ nav {
   align-items: center;
 }
 
-.home {
+#home-button {
   float: left;
 }
 
-.setting {
+#setting-button {
   float: right;
 }
 
