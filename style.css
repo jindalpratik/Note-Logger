@@ -64,8 +64,8 @@ textarea {
   color: #333;
 }
 
-button {
-  background-color: #007bff; /* Blue */
+#submit-button {
+  background-color: #2b2e32;
   color: #ffffff; /* White */
   border: none;
   border-radius: 5px;
@@ -75,7 +75,7 @@ button {
   transition: all 0.3s ease-in-out;
 }
 
-button:hover {
+#submit-button:hover {
   background-color: #0056b3; /* Dark blue */
 }
 
