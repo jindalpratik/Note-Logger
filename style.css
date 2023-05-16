@@ -16,11 +16,11 @@ body {
 
 nav {
   max-width: 640px;
-  margin: 0 auto 0px auto;
+  margin: 0 auto 20px auto;
   padding: 0px;
   background-color: #ffffff; /* White */
   border-radius: 10px;
-  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2);  
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);  
   display: flex;
   flex-direction: row;
   justify-content: space-between;
