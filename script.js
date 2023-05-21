@@ -15,13 +15,20 @@ $.each(notes, function (curId) {
   addNoteToUl(curId);
 });
 
+let curEdit = [];
+
 function addNoteToUl(curId) {
 
   const li = $("<li>").attr("id", "li-" + curId);
   const p = $("<p>")
     .attr("id","p-" + curId)
+    .attr("hidden",false)
     .text(notes[curId]);
+  const textarea = $("<textarea>")
+    .attr("id", "textarea-"+curId)
+    .attr("hidden",true);
   li.append(p);
+  li.append(textarea);
 
   // Creating the Buttons and their classes.
   const div = $("<div>").addClass("note-buttons");
@@ -78,6 +85,28 @@ $(document).on("click", ".delete-button", function () {
   const liId = "#li-" + del_id.substr(7);
   $(liId).remove();
   delete notes[del_id];
+
+  localStorage.setItem("notes", JSON.stringify(notes));
+});
+
+$(document).on("click", ".edit-button", function () {
+  const edit_id = $(this).attr("id");
+  const id = edit_id.substr(5)
+  const textareaId = "#textarea-" + id;
+  const pId = "#p-" + edit_id.substr(5);
+
+  if (curEdit.indexOf(Number(id)) == -1) {
+    $(pId).hide();
+    $(textareaId).show();
+    curEdit.push(Number(id));
+    console.log(curEdit);
+  }
+  else {
+    $(pId).show();
+    $(textareaId).hide();
+    const remIndex = curEdit.indexOf(Number(id));
+    curEdit.splice(remIndex,1);
+  }
 
   localStorage.setItem("notes", JSON.stringify(notes));
 });
