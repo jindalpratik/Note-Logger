@@ -50,6 +50,10 @@ nav h2 {
 }
 
 /* Main Content */
+#note-elements, #settings-elements {
+  border-radius: 0px 0px 10px 10px;
+}
+
 h2 {
   font-size: 36px;
   font-weight: bold;
@@ -108,7 +112,7 @@ li {
   justify-content: space-between;
   border: 2px solid #aebacf;
   border-radius: 5px;
-  padding: 10px;
+  padding: 5px;
   margin-bottom: 10px;
   background-color: #f5f7fa;
   color: #333;
@@ -127,6 +131,15 @@ li:hover {
   background-color: #ffffff;
 }
 
+li p {
+  border-radius: 5px;
+  font-size: 14px;
+  width: 100%;
+  background-color: #f5f7fa;
+  border: 2px solid #aebacf;
+  padding: 7px;
+}
+
 .note-buttons {
   display: flex;
   align-items: start;
@@ -135,7 +148,6 @@ li:hover {
 
 .note-buttons button {
   background-color: transparent;
-  border: none;
   margin: 1px;
   font-size: 14px;
   cursor: pointer;
