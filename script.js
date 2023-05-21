@@ -84,7 +84,7 @@ $(document).on("click", ".delete-button", function () {
   const del_id = $(this).attr("id");
   const liId = "#li-" + del_id.substr(7);
   $(liId).remove();
-  delete notes[del_id];
+  delete notes[del_id.substr(7)];
 
   localStorage.setItem("notes", JSON.stringify(notes));
 });
