@@ -27,7 +27,7 @@ function addNoteToUl(curId) {
   const div = $("<div>").addClass("note-buttons");
   const editButton = $("<button>")
     .addClass("edit-button")
-    .attr("edit", "edit-"+curId);
+    .attr("id", "edit-"+curId);
   const deleteButton = $("<button>")
     .addClass("delete-button")
     .attr("id", "delete-"+curId);
