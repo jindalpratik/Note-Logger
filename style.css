@@ -50,7 +50,8 @@ nav h2 {
 }
 
 /* Main Content */
-#note-elements, #settings-elements {
+#note-elements,
+#settings-elements {
   border-radius: 0px 0px 10px 10px;
 }
 
