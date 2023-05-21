@@ -93,3 +93,40 @@ $("#note-input").on("keydown", function (e) {
     this.selectionStart = this.selectionEnd = start + 1;
   }
 });
+
+$(document).ready(function() {
+  const noteElements = $('#note-elements');
+  const settingsElements = $('#settings-elements');
+  const settingsButton = $('#settings-button');
+  const homeButton = $('#home-button');
+
+  // Show note elements and hide settings
+  function showNoteElements() {
+    noteElements.show();
+    settingsElements.hide();
+    settingsButton.show();
+    homeButton.hide();
+  }
+
+  // Show settings and hide note elements
+  function showSettings() {
+    noteElements.hide();
+    settingsElements.show();
+    settingsButton.hide();
+    homeButton.show();
+  }
+
+  // Handle home button click
+  homeButton.on('click', function() {
+    showNoteElements();
+  });
+
+  // Handle settings button click
+  settingsButton.on('click', function() {
+    showSettings();
+  });
+  
+  // Show note elements by default
+  showNoteElements();
+});
+
