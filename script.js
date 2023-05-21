@@ -17,9 +17,9 @@ $.each(notes, function (curId) {
 
 function addNoteToUl(curId) {
 
-  const li = $("<li>").attr("id", "parent-" + curId);
+  const li = $("<li>").attr("id", "li-" + curId);
   const p = $("<p>")
-    .attr("id","text-" + curId)
+    .attr("id","p-" + curId)
     .text(notes[curId]);
   li.append(p);
 
@@ -73,8 +73,8 @@ noteForm.on("submit", function (event) {
 // Delete note.
 $(document).on("click", ".delete-button", function () {
   const del_id = $(this).attr("id");
-  const parentId = "#parent-" + del_id;
-  $(parentId).remove();
+  const liId = "#li-" + del_id;
+  $(liId).remove();
   delete notes[del_id];
 
   localStorage.setItem("notes", JSON.stringify(notes));
