@@ -15,7 +15,12 @@ body {
 }
 
 /* Navigation */
+/* Navigation */
+/* Navigation */
 nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   max-width: 640px;
   margin: 0 auto;
   clip-path: inset(-10px -10px 0px -10px);
@@ -23,18 +28,33 @@ nav {
   padding: 0;
   background-color: #ffffff;
   border-radius: 10px 10px 0 0;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);  
 }
 
 nav h2 {
   padding: 5px;
+  margin: 0;
 }
 
 .nav-buttons {
-  background-color: transparent;
-  padding: 5px;
-  border: none;
+  display: flex;
 }
+
+.nav-buttons button {
+  background-color: transparent;
+  border: none;
+  margin: 1px;
+  /* font-size: 20px; */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  color: #333;
+  /* background-color: #f5f7fa;
+  border: 2px solid #aebacf; */
+  line-height: 2px;
+  padding: 10px;
+}
+
+
 
 /* Main Content */
 h2 {
