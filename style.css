@@ -26,7 +26,7 @@ nav {
   padding: 0;
   background-color: #ffffff;
   border-radius: 10px 10px 0 0;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);  
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 nav h2 {
@@ -48,8 +48,6 @@ nav h2 {
   line-height: 2px;
   padding: 10px;
 }
-
-
 
 /* Main Content */
 h2 {
