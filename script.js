@@ -25,10 +25,12 @@ function addNoteToUl(curId) {
 
   // Creating the Buttons and their classes.
   const div = $("<div>").addClass("note-buttons");
-  const editButton = $("<button>").addClass("edit-button");
+  const editButton = $("<button>")
+    .addClass("edit-button")
+    .attr("edit", "edit-"+curId);
   const deleteButton = $("<button>")
     .addClass("delete-button")
-    .attr("id", curId);
+    .attr("id", "delete-"+curId);
 
   // Creating the Button icons and their classes.
   const editButtonIcon = $("<i>").addClass("fas fa-edit");
@@ -73,7 +75,7 @@ noteForm.on("submit", function (event) {
 // Delete note.
 $(document).on("click", ".delete-button", function () {
   const del_id = $(this).attr("id");
-  const liId = "#li-" + del_id;
+  const liId = "#li-" + del_id.substr(7);
   $(liId).remove();
   delete notes[del_id];
 
