@@ -16,9 +16,12 @@ $.each(notes, function (curId) {
 });
 
 function addNoteToUl(curId) {
-  const li = $("<li>")
-    .attr("id", "parent-" + curId)
+
+  const li = $("<li>").attr("id", "parent-" + curId);
+  const p = $("<p>")
+    .attr("id","text-" + curId)
     .text(notes[curId]);
+  li.append(p);
 
   // Creating the Buttons and their classes.
   const div = $("<div>").addClass("note-buttons");
