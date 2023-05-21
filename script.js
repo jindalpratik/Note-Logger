@@ -18,16 +18,15 @@ $.each(notes, function (curId) {
 let curEdit = [];
 
 function addNoteToUl(curId) {
-
   const li = $("<li>").attr("id", "li-" + curId);
   const p = $("<p>")
-    .attr("id","p-" + curId)
-    .attr("hidden",false)
+    .attr("id", "p-" + curId)
+    .attr("hidden", false)
     .text(notes[curId]);
   const textarea = $("<textarea>")
     .addClass("no-tabs")
-    .attr("id", "textarea-"+curId)
-    .attr("hidden",true);
+    .attr("id", "textarea-" + curId)
+    .attr("hidden", true);
   li.append(p);
   li.append(textarea);
 
@@ -35,10 +34,10 @@ function addNoteToUl(curId) {
   const div = $("<div>").addClass("note-buttons");
   const editButton = $("<button>")
     .addClass("edit-button")
-    .attr("id", "edit-"+curId);
+    .attr("id", "edit-" + curId);
   const deleteButton = $("<button>")
     .addClass("delete-button")
-    .attr("id", "delete-"+curId);
+    .attr("id", "delete-" + curId);
 
   // Creating the Button icons and their classes.
   const editButtonIcon = $("<i>").addClass("fas fa-edit");
@@ -92,28 +91,21 @@ $(document).on("click", ".delete-button", function () {
 
 $(document).on("click", ".edit-button", function () {
   const edit_id = $(this).attr("id");
-  const id = edit_id.substr(5)
+  const id = edit_id.substr(5);
   const textareaId = "#textarea-" + id;
   const pId = "#p-" + edit_id.substr(5);
 
   if (curEdit.indexOf(Number(id)) == -1) {
     $(pId).hide();
-    $(textareaId)
-      .show()
-      .text(notes[id]);
+    $(textareaId).show().text(notes[id]);
     curEdit.push(Number(id));
     console.log(curEdit);
-  }
-  else {
+  } else {
     notes[id] = $(textareaId).val().trim();
-    $(pId)
-      .show()
-      .text(notes[id]);
-    $(textareaId)
-      .val("")
-      .hide();
+    $(pId).show().text(notes[id]);
+    $(textareaId).val("").hide();
     const remIndex = curEdit.indexOf(Number(id));
-    curEdit.splice(remIndex,1);
+    curEdit.splice(remIndex, 1);
   }
 
   localStorage.setItem("notes", JSON.stringify(notes));
