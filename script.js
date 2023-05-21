@@ -25,6 +25,7 @@ function addNoteToUl(curId) {
     .attr("hidden",false)
     .text(notes[curId]);
   const textarea = $("<textarea>")
+    .addClass("no-tabs")
     .attr("id", "textarea-"+curId)
     .attr("hidden",true);
   li.append(p);
@@ -97,13 +98,20 @@ $(document).on("click", ".edit-button", function () {
 
   if (curEdit.indexOf(Number(id)) == -1) {
     $(pId).hide();
-    $(textareaId).show();
+    $(textareaId)
+      .show()
+      .text(notes[id]);
     curEdit.push(Number(id));
     console.log(curEdit);
   }
   else {
-    $(pId).show();
-    $(textareaId).hide();
+    notes[id] = $(textareaId).val().trim();
+    $(pId)
+      .show()
+      .text(notes[id]);
+    $(textareaId)
+      .val("")
+      .hide();
     const remIndex = curEdit.indexOf(Number(id));
     curEdit.splice(remIndex,1);
   }
@@ -112,7 +120,7 @@ $(document).on("click", ".edit-button", function () {
 });
 
 // Allow tabs in the notes.
-$("#note-input").on("keydown", function (e) {
+$(".no-tabs").on("keydown", function (e) {
   if (e.key == "Tab") {
     e.preventDefault();
     var start = this.selectionStart;
