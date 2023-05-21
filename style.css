@@ -23,13 +23,12 @@ nav {
   padding: 0;
   background-color: #ffffff;
   border-radius: 10px 10px 0 0;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);  
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 nav h2 {
   padding: 5px;
 }
-
 
 .nav-buttons {
   background-color: transparent;
@@ -132,30 +131,30 @@ li:hover {
   border: 2px solid #aebacf;
   line-height: 2px;
   padding: 7px;
-  }
-  
-  .edit-button {
+}
+
+.edit-button {
   border-radius: 10px 2px 2px 10px;
-  }
-  
-  .delete-button {
+}
+
+.delete-button {
   border-radius: 2px 10px 10px 2px;
-  }
-  
-  .edit-button:hover {
+}
+
+.edit-button:hover {
   border-color: #dfb109;
   color: #dfb109;
-  }
-  
-  .delete-button:hover {
+}
+
+.delete-button:hover {
   border-color: #ee3b0e;
   color: #ff3300;
-  }
-  
-  /* Footer */
-  footer {
+}
+
+/* Footer */
+footer {
   margin-top: 20px;
   text-align: center;
   font-size: 14px;
   color: #999;
-  }
+}

@@ -94,11 +94,11 @@ $("#note-input").on("keydown", function (e) {
   }
 });
 
-$(document).ready(function() {
-  const noteElements = $('#note-elements');
-  const settingsElements = $('#settings-elements');
-  const settingsButton = $('#settings-button');
-  const homeButton = $('#home-button');
+$(document).ready(function () {
+  const noteElements = $("#note-elements");
+  const settingsElements = $("#settings-elements");
+  const settingsButton = $("#settings-button");
+  const homeButton = $("#home-button");
 
   // Show note elements and hide settings
   function showNoteElements() {
@@ -117,16 +117,15 @@ $(document).ready(function() {
   }
 
   // Handle home button click
-  homeButton.on('click', function() {
+  homeButton.on("click", function () {
     showNoteElements();
   });
 
   // Handle settings button click
-  settingsButton.on('click', function() {
+  settingsButton.on("click", function () {
     showSettings();
   });
-  
+
   // Show note elements by default
   showNoteElements();
 });
-
