@@ -15,8 +15,6 @@ body {
 }
 
 /* Navigation */
-/* Navigation */
-/* Navigation */
 nav {
   display: flex;
   justify-content: space-between;
@@ -44,12 +42,9 @@ nav h2 {
   background-color: transparent;
   border: none;
   margin: 1px;
-  /* font-size: 20px; */
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   color: #333;
-  /* background-color: #f5f7fa;
-  border: 2px solid #aebacf; */
   line-height: 2px;
   padding: 10px;
 }
