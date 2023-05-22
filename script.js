@@ -22,22 +22,26 @@ function addNoteToUl(curId) {
   const p = $("<p>")
     .attr("id", "p-" + curId)
     .attr("hidden", false)
+    .attr("class","note-content")
     .text(notes[curId]);
   const textarea = $("<textarea>")
     .addClass("no-tabs")
     .attr("id", "textarea-" + curId)
     .attr("hidden", true);
-  li.append(p);
-  li.append(textarea);
 
   // Creating the Buttons and their classes.
-  const div = $("<div>").addClass("note-buttons");
+  const div1 = $("<div>").addClass("note-buttons");
+  const div2 = $("<div>").addClass("note-title");
   const editButton = $("<button>")
     .addClass("edit-button")
     .attr("id", "edit-" + curId);
   const deleteButton = $("<button>")
     .addClass("delete-button")
     .attr("id", "delete-" + curId);
+  const date = $("<p>")
+    .attr("id","date-"+ curId)
+    .attr("class","dates")
+    .text("No date available");
 
   // Creating the Button icons and their classes.
   const editButtonIcon = $("<i>").addClass("fas fa-edit");
@@ -46,9 +50,15 @@ function addNoteToUl(curId) {
   // Adding the note to the html with the buttons included.
   editButton.append(editButtonIcon);
   deleteButton.append(deleteButtonIcon);
-  div.append(editButton).append(deleteButton);
-  li.append(div);
+  div1.append(date).append(editButton).append(deleteButton);
+  div2.append(date).append(div1);
+  li.append(div2);
+  li.append(p);
+  li.append(textarea);
   noteList.append(li);
+  // if($("#date-"+ curId).text() == "") {
+  //   date.hide();
+  // }
 
   // Clear input
   noteInput.val("");
