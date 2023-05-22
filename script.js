@@ -8,7 +8,7 @@ let id = 0;
 
 if (localStorage.getItem("notes") !== null) {
   notes = JSON.parse(localStorage.getItem("notes"));
-  if(localStorage.getItem("dates") !== null) {
+  if (localStorage.getItem("dates") !== null) {
     dates = JSON.parse(localStorage.getItem("dates"));
   }
   id = Number(localStorage.getItem("id"));
@@ -45,10 +45,10 @@ function addNoteToUl(curId) {
 
   // Adding the date to the note.
   let curDate;
-  if(dates[curId] !== undefined) {
+  if (dates[curId] !== undefined) {
     curDate = new Date(dates[curId]).toLocaleDateString();
   } else {
-    dates[curId] = new Date()
+    dates[curId] = new Date();
     curDate = dates[curId].toLocaleDateString();
     localStorage.setItem("dates", JSON.stringify(dates));
   }
