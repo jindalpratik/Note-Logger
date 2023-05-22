@@ -46,10 +46,10 @@ function addNoteToUl(curId) {
   // Adding the date to the note.
   let curDate;
   if (dates[curId] !== undefined) {
-    curDate = new Date(dates[curId]).toLocaleDateString();
+    curDate = new Date(dates[curId]).toLocaleString();
   } else {
     dates[curId] = new Date();
-    curDate = dates[curId].toLocaleDateString();
+    curDate = dates[curId].toLocaleString();
     localStorage.setItem("dates", JSON.stringify(dates));
   }
 
