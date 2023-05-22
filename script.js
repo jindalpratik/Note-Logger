@@ -38,10 +38,13 @@ function addNoteToUl(curId) {
   const deleteButton = $("<button>")
     .addClass("delete-button")
     .attr("id", "delete-" + curId);
+
+  // Adding the date to the note.
+  const curDate = new Date();
   const date = $("<p>")
     .attr("id", "date-" + curId)
     .attr("class", "dates")
-    .text("No date available");
+    .text(curDate.toLocaleDateString());
 
   // Creating the Button icons and their classes.
   const editButtonIcon = $("<i>").addClass("fas fa-edit");
