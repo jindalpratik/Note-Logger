@@ -24,7 +24,7 @@ nav {
   clip-path: inset(-10px -10px 0px -10px);
   border-bottom: 0.1px solid #2b2e32;
   padding: 0;
-  background-color: #ffffff;
+  background-color: #35547e;
   border-radius: 10px 10px 0 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
@@ -44,7 +44,7 @@ nav h2 {
   margin: 1px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  color: #333;
+  color: #dddddd;
   line-height: 2px;
   padding: 10px;
 }
@@ -60,7 +60,7 @@ h2 {
   font-weight: bold;
   margin-bottom: 20px;
   text-align: center;
-  color: #35547e;
+  color: #ffffff;
 }
 
 form {
@@ -166,6 +166,9 @@ li:hover {
   font-size: 18px;
   padding: 10px;
   border-radius: 5px;
+  background-color: #35547e;
+  color: #ffffff;
+  border: none;
 }
 
 .edit-button {
