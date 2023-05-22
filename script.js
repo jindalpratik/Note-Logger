@@ -8,7 +8,9 @@ let id = 0;
 
 if (localStorage.getItem("notes") !== null) {
   notes = JSON.parse(localStorage.getItem("notes"));
-  dates = JSON.parse(localStorage.getItem("dates"));
+  if(localStorage.getItem("dates") !== null) {
+    dates = JSON.parse(localStorage.getItem("dates"));
+  }
   id = Number(localStorage.getItem("id"));
 }
 
@@ -49,6 +51,7 @@ function addNoteToUl(curId) {
   } else {
     dates[curId] = new Date()
     curDate = dates[curId].toLocaleDateString();
+    localStorage.setItem("dates", JSON.stringify(dates));
   }
 
   const date = $("<p>")
@@ -93,7 +96,7 @@ function addNote() {
   addNoteToUl(id);
 
   //Store the notes in browser storage
-  localStorage.setItem("dates", JSON.stringify(dates))
+  localStorage.setItem("dates", JSON.stringify(dates));
   localStorage.setItem("notes", JSON.stringify(notes));
   localStorage.setItem("id", id);
 }
