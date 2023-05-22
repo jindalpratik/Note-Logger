@@ -8,6 +8,7 @@ let id = 0;
 
 if (localStorage.getItem("notes") !== null) {
   notes = JSON.parse(localStorage.getItem("notes"));
+  dates = JSON.parse(localStorage.getItem("dates"));
   id = Number(localStorage.getItem("id"));
 }
 
@@ -43,10 +44,11 @@ function addNoteToUl(curId) {
   // Adding the date to the note.
   console.log(dates[curId])
   let curDate;
-  if(dates[curId] != undefined) {
-    curDate = dates[curId].toLocaleDateString();
+  if(dates[curId] !== undefined) {
+    curDate = new Date(dates[curId]).toLocaleDateString();
   } else {
-    curDate = "hello" + new Date().toLocaleDateString();;
+    dates[curId] = new Date()
+    curDate = dates[curId].toLocaleDateString();
   }
 
   const date = $("<p>")
@@ -67,9 +69,6 @@ function addNoteToUl(curId) {
   li.append(p);
   li.append(textarea);
   noteList.append(li);
-  // if($("#date-"+ curId).text() == "") {
-  //   date.hide();
-  // }
 
   // Clear input
   noteInput.val("");
@@ -94,6 +93,7 @@ function addNote() {
   addNoteToUl(id);
 
   //Store the notes in browser storage
+  localStorage.setItem("dates", JSON.stringify(dates))
   localStorage.setItem("notes", JSON.stringify(notes));
   localStorage.setItem("id", id);
 }
@@ -109,8 +109,9 @@ $(document).on("click", ".delete-button", function () {
   const liId = "#li-" + del_id.substr(7);
   $(liId).remove();
   delete notes[del_id.substr(7)];
-
+  delete dates[del_id.substr(7)];
   localStorage.setItem("notes", JSON.stringify(notes));
+  localStorage.setItem("dates", JSON.stringify(dates));
 });
 
 $(document).on("click", ".edit-button", function () {
