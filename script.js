@@ -44,7 +44,6 @@ function addNoteToUl(curId) {
     .attr("id", "delete-" + curId);
 
   // Adding the date to the note.
-  console.log(dates[curId])
   let curDate;
   if(dates[curId] !== undefined) {
     curDate = new Date(dates[curId]).toLocaleDateString();
@@ -91,8 +90,6 @@ function addNote() {
   notes[id] = text;
   dates[id] = new Date();
 
-  console.log(dates);
-
   addNoteToUl(id);
 
   //Store the notes in browser storage
@@ -127,7 +124,6 @@ $(document).on("click", ".edit-button", function () {
     $(pId).hide();
     $(textareaId).val(notes[id]).show();
     curEdit.push(Number(id));
-    console.log(curEdit);
   } else {
     notes[id] = $(textareaId).val().trim();
     $(pId).show().text(notes[id]);
