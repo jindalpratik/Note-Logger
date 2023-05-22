@@ -3,6 +3,7 @@ const noteInput = $("#note-input");
 const noteList = $("#note-list");
 
 let notes = {};
+let dates = {};
 let id = 0;
 
 if (localStorage.getItem("notes") !== null) {
@@ -40,11 +41,18 @@ function addNoteToUl(curId) {
     .attr("id", "delete-" + curId);
 
   // Adding the date to the note.
-  const curDate = new Date();
+  console.log(dates[curId])
+  let curDate;
+  if(dates[curId] != undefined) {
+    curDate = dates[curId].toLocaleDateString();
+  } else {
+    curDate = "hello" + new Date().toLocaleDateString();;
+  }
+
   const date = $("<p>")
     .attr("id", "date-" + curId)
     .attr("class", "dates")
-    .text(curDate.toLocaleDateString());
+    .text(curDate);
 
   // Creating the Button icons and their classes.
   const editButtonIcon = $("<i>").addClass("fas fa-edit");
@@ -79,6 +87,9 @@ function addNote() {
 
   // Add note to dictionary
   notes[id] = text;
+  dates[id] = new Date();
+
+  console.log(dates);
 
   addNoteToUl(id);
 
