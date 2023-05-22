@@ -3,10 +3,14 @@ const noteInput = $("#note-input");
 const noteList = $("#note-list");
 
 let notes = {};
+let dates = {};
 let id = 0;
 
 if (localStorage.getItem("notes") !== null) {
   notes = JSON.parse(localStorage.getItem("notes"));
+  if (localStorage.getItem("dates") !== null) {
+    dates = JSON.parse(localStorage.getItem("dates"));
+  }
   id = Number(localStorage.getItem("id"));
 }
 
@@ -22,22 +26,37 @@ function addNoteToUl(curId) {
   const p = $("<p>")
     .attr("id", "p-" + curId)
     .attr("hidden", false)
+    .attr("class", "note-content")
     .text(notes[curId]);
   const textarea = $("<textarea>")
     .addClass("no-tabs")
     .attr("id", "textarea-" + curId)
     .attr("hidden", true);
-  li.append(p);
-  li.append(textarea);
 
   // Creating the Buttons and their classes.
-  const div = $("<div>").addClass("note-buttons");
+  const div1 = $("<div>").addClass("note-buttons");
+  const div2 = $("<div>").addClass("note-title");
   const editButton = $("<button>")
     .addClass("edit-button")
     .attr("id", "edit-" + curId);
   const deleteButton = $("<button>")
     .addClass("delete-button")
     .attr("id", "delete-" + curId);
+
+  // Adding the date to the note.
+  let curDate;
+  if (dates[curId] !== undefined) {
+    curDate = new Date(dates[curId]).toLocaleString();
+  } else {
+    dates[curId] = new Date();
+    curDate = dates[curId].toLocaleString();
+    localStorage.setItem("dates", JSON.stringify(dates));
+  }
+
+  const date = $("<p>")
+    .attr("id", "date-" + curId)
+    .attr("class", "dates")
+    .text(curDate);
 
   // Creating the Button icons and their classes.
   const editButtonIcon = $("<i>").addClass("fas fa-edit");
@@ -46,8 +65,11 @@ function addNoteToUl(curId) {
   // Adding the note to the html with the buttons included.
   editButton.append(editButtonIcon);
   deleteButton.append(deleteButtonIcon);
-  div.append(editButton).append(deleteButton);
-  li.append(div);
+  div1.append(date).append(editButton).append(deleteButton);
+  div2.append(date).append(div1);
+  li.append(div2);
+  li.append(p);
+  li.append(textarea);
   noteList.append(li);
 
   // Clear input
@@ -66,10 +88,12 @@ function addNote() {
 
   // Add note to dictionary
   notes[id] = text;
+  dates[id] = new Date();
 
   addNoteToUl(id);
 
   //Store the notes in browser storage
+  localStorage.setItem("dates", JSON.stringify(dates));
   localStorage.setItem("notes", JSON.stringify(notes));
   localStorage.setItem("id", id);
 }
@@ -85,8 +109,9 @@ $(document).on("click", ".delete-button", function () {
   const liId = "#li-" + del_id.substr(7);
   $(liId).remove();
   delete notes[del_id.substr(7)];
-
+  delete dates[del_id.substr(7)];
   localStorage.setItem("notes", JSON.stringify(notes));
+  localStorage.setItem("dates", JSON.stringify(dates));
 });
 
 $(document).on("click", ".edit-button", function () {
@@ -99,7 +124,6 @@ $(document).on("click", ".edit-button", function () {
     $(pId).hide();
     $(textareaId).val(notes[id]).show();
     curEdit.push(Number(id));
-    console.log(curEdit);
   } else {
     notes[id] = $(textareaId).val().trim();
     $(pId).show().text(notes[id]);

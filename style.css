@@ -60,6 +60,7 @@ h2 {
   font-weight: bold;
   margin-bottom: 20px;
   text-align: center;
+  color: #35547e;
 }
 
 form {
@@ -110,7 +111,7 @@ ul {
 li {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   border: 2px solid #aebacf;
   border-radius: 5px;
   padding: 5px;
@@ -132,13 +133,13 @@ li:hover {
   background-color: #ffffff;
 }
 
-li p {
-  border-radius: 5px;
-  font-size: 14px;
+.note-title {
+  max-width: 100%;
   width: 100%;
-  background-color: #f5f7fa;
-  border: 2px solid #aebacf;
-  padding: 7px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .note-buttons {
@@ -147,7 +148,8 @@ li p {
   margin-left: 5px;
 }
 
-.note-buttons button {
+.note-buttons button,
+.dates {
   background-color: transparent;
   margin: 1px;
   font-size: 14px;
@@ -158,6 +160,12 @@ li p {
   border: 2px solid #aebacf;
   line-height: 2px;
   padding: 7px;
+}
+
+.dates {
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .edit-button {
@@ -176,6 +184,23 @@ li p {
 .delete-button:hover {
   border-color: #ee3b0e;
   color: #ff3300;
+}
+
+.note-content {
+  border-radius: 5px;
+  font-size: 14px;
+  width: 97%;
+  max-width: 97%;
+  margin-top: 5px;
+  background-color: #f5f7fa;
+  border: 2px solid #aebacf;
+  padding: 7px;
+}
+
+li textarea {
+  width: 95%;
+  max-width: 95%;
+  margin-top: 5px;
 }
 
 /* Footer */
