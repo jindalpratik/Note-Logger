@@ -22,7 +22,7 @@ function addNoteToUl(curId) {
   const p = $("<p>")
     .attr("id", "p-" + curId)
     .attr("hidden", false)
-    .attr("class","note-content")
+    .attr("class", "note-content")
     .text(notes[curId]);
   const textarea = $("<textarea>")
     .addClass("no-tabs")
@@ -39,8 +39,8 @@ function addNoteToUl(curId) {
     .addClass("delete-button")
     .attr("id", "delete-" + curId);
   const date = $("<p>")
-    .attr("id","date-"+ curId)
-    .attr("class","dates")
+    .attr("id", "date-" + curId)
+    .attr("class", "dates")
     .text("No date available");
 
   // Creating the Button icons and their classes.
