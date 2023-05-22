@@ -97,7 +97,7 @@ $(document).on("click", ".edit-button", function () {
 
   if (curEdit.indexOf(Number(id)) == -1) {
     $(pId).hide();
-    $(textareaId).show().text(notes[id]);
+    $(textareaId).val(notes[id]).show();
     curEdit.push(Number(id));
     console.log(curEdit);
   } else {
