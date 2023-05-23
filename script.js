@@ -3,6 +3,7 @@ let notes = {};
 let dates = {};
 let id = 0;
 let dateTime = true;
+let confirmDelete = true;
 
 // Global variables not in local storage.
 let curEdit = [];
@@ -19,6 +20,13 @@ if (localStorage.getItem("notes") !== null) {
       dateTime = true;
     } else {
       dateTime = false;
+    }
+  }
+  if (localStorage.getItem("confirmDelete") !== null) {
+    if (localStorage.getItem("confirmDelete") == "true") {
+      confirmDelete = true;
+    } else {
+      confirmDelete = false;
     }
   }
 }
@@ -120,6 +128,14 @@ $("#note-form").on("submit", function (event) {
 
 // Event listener for deleting a note.
 $(document).on("click", ".delete-button", function () {
+  // Check if confirm delete is true.
+  if (confirmDelete) {
+    const confirmDialog = confirm("Are you sure you want to delete this note?");
+    if (!confirmDialog) {
+      return;
+    }
+  }
+
   const del_id = $(this).attr("id");
   const liId = "#li-" + del_id.substr(7);
 
@@ -228,20 +244,37 @@ dayDateSetting.on("change", function () {
   }
 });
 
+// Confirm note delete Settings.
+const confirmDeleteSetting = $("#confirmDelete-setting");
+let confirmDeleteState = true;
+
+confirmDeleteSetting.on("change", function () {
+  confirmDeleteState = $(this).is(":checked");
+  if (confirmDeleteState) {
+    confirmDelete = true;
+    localStorage.setItem("confirmDelete", true);
+  } else {
+    confirmDelete = false;
+    localStorage.setItem("confirmDelete", false);
+  }
+});
+
 // Clear data Settings.
 const clearDataButton = $("#clear-data-button");
 
 clearDataButton.on("click", function () {
   // Show confirmation dialog
-  showConfirmationDialog();
+  showConfirmationDialog_dataDeletion();
 });
 
-function showConfirmationDialog() {
+// Confirmation dialog for deletion of all notes.
+function showConfirmationDialog_dataDeletion() {
   const confirmDialog = confirm(
     "Are you sure you want to clear all site data?"
   );
   if (confirmDialog) {
     dayDateSetting[0].checked = false;
+    confirmDeleteSetting[0].checked = true;
     localStorage.clear();
     window.location.reload();
     console.log("Clearing site data...");
