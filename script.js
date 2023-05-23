@@ -245,5 +245,4 @@ function clearSiteData() {
   localStorage.clear();
   window.location.reload();
   console.log("Clearing site data...");
-  // Implement your code to clear the site data here
 }
