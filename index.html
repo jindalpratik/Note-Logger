@@ -35,16 +35,17 @@
       </form>
       <ul id="note-list"></ul>
     </div>
-    <div class="container" id="setting-container">
-      <div class="settings">
+    <div class="container" id="setting-container" hidden="true">
+      <div class="settings top-setting">
         <p>
-          Display only the creation date of notes, excluding the time.</p>
+          Display only the creation date of notes, excluding the time:</p>
         <label class="toggle-switch">
           <input type="checkbox" id="toggle-setting" />
           <span class="slider"></span>
         </label>
       </div>
-      <div class="settings">
+      <div class="settings bottom-setting">
+        <p class="setting-description">Clear all site data:</p>
         <button id="clear-data-button">Clear Data</button>
       </div>
     </div>

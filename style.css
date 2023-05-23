@@ -87,7 +87,22 @@ textarea {
 .settings {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  justify-content: space-between;
+  border: 2px solid #aebacf;
+  background-color: #eff7ff;
+  padding: 5px;
+}
+
+.top-setting {
+  border-radius: 10px 10px 0 0;
+}
+
+.bottom-setting {
+  border-radius: 0px 0px 10px 10px;
+}
+
+.setting-description {
+  margin-right: 10px;
 }
 
 .toggle-switch {
@@ -133,6 +148,13 @@ input[type="checkbox"]:checked + .slider {
 
 input[type="checkbox"]:checked + .slider:before {
   transform: translateX(20px);
+}
+
+#clear-data-button {
+  background-color: #c12a00;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 
