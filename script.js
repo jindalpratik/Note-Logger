@@ -10,7 +10,7 @@ let curEdit = [];
 // Retrieve all the varibales from browser storage.
 if (localStorage.getItem("notes") !== null) {
   notes = JSON.parse(localStorage.getItem("notes"));
-  id = Number(localStorage.getItem("id"));  
+  id = Number(localStorage.getItem("id"));
   if (localStorage.getItem("dates") !== null) {
     dates = JSON.parse(localStorage.getItem("dates"));
   }
@@ -28,11 +28,8 @@ $.each(notes, function (curId) {
   addNoteToUl(curId);
 });
 
-
-
 // Function to add the notes to list.
 function addNoteToUl(curId) {
-
   // Initializing the list element and the text that goes in it.
   const li = $("<li>").attr("id", "li-" + curId);
   const p = $("<p>")
@@ -62,7 +59,8 @@ function addNoteToUl(curId) {
   if (dateTime) {
     if (dates[curId] !== undefined) {
       curDate = new Date(dates[curId]).toLocaleString();
-    } else { // Set default date in case no date is available due to migration from an old to a new version of the site.
+    } else {
+      // Set default date in case no date is available due to migration from an old to a new version of the site.
       dates[curId] = new Date();
       curDate = dates[curId].toLocaleString();
       localStorage.setItem("dates", JSON.stringify(dates));
@@ -122,7 +120,6 @@ $("#note-form").on("submit", function (event) {
 
 // Event listener for deleting a note.
 $(document).on("click", ".delete-button", function () {
-
   const del_id = $(this).attr("id");
   const liId = "#li-" + del_id.substr(7);
 
@@ -148,7 +145,8 @@ $(document).on("click", ".edit-button", function () {
     $(pId).hide();
     $(textareaId).val(notes[id]).show();
     curEdit.push(Number(id));
-  } else { // Update the note with the edited text.
+  } else {
+    // Update the note with the edited text.
     notes[id] = $(textareaId).val().trim();
     $(pId).show().text(notes[id]);
     $(textareaId).val("").hide();
@@ -216,10 +214,10 @@ $(document).ready(function () {
 });
 
 // DateTime Settings.
-const toggleSetting = $("#toggle-setting");
+const dayDateSetting = $("#dayDate-setting");
 let settingState = true;
 
-toggleSetting.on("change", function () {
+dayDateSetting.on("change", function () {
   settingState = $(this).is(":checked");
   if (settingState) {
     dateTime = false;
@@ -243,7 +241,7 @@ function showConfirmationDialog() {
     "Are you sure you want to clear all site data?"
   );
   if (confirmDialog) {
-    toggleSetting[0].checked = false;
+    dayDateSetting[0].checked = false;
     localStorage.clear();
     window.location.reload();
     console.log("Clearing site data...");
