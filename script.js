@@ -5,11 +5,15 @@ const noteList = $("#note-list");
 let notes = {};
 let dates = {};
 let id = 0;
+let dateTime = true;
 
 if (localStorage.getItem("notes") !== null) {
   notes = JSON.parse(localStorage.getItem("notes"));
   if (localStorage.getItem("dates") !== null) {
     dates = JSON.parse(localStorage.getItem("dates"));
+  }
+  if (localStorage.getItem("dateTime") !== null) {
+    dateTime = localStorage.getItem("dateTime");
   }
   id = Number(localStorage.getItem("id"));
 }
@@ -45,12 +49,16 @@ function addNoteToUl(curId) {
 
   // Adding the date to the note.
   let curDate;
-  if (dates[curId] !== undefined) {
-    curDate = new Date(dates[curId]).toLocaleString();
+  if (dateTime) {
+    if (dates[curId] !== undefined) {
+      curDate = new Date(dates[curId]).toLocaleString();
+    } else {
+      dates[curId] = new Date();
+      curDate = dates[curId].toLocaleString();
+      localStorage.setItem("dates", JSON.stringify(dates));
+    }
   } else {
-    dates[curId] = new Date();
-    curDate = dates[curId].toLocaleString();
-    localStorage.setItem("dates", JSON.stringify(dates));
+    curDate = new Date(dates[curId]).toLocaleDateString();
   }
 
   const date = $("<p>")
