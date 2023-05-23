@@ -18,7 +18,6 @@ if (localStorage.getItem("notes") !== null) {
     } else {
       dateTime = false;
     }
-    console.log(dateTime);
   }
   id = Number(localStorage.getItem("id"));
 }
