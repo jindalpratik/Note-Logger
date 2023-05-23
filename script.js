@@ -154,7 +154,7 @@ $(".no-tabs").on("keydown", function (e) {
 
 $(document).ready(function () {
   const noteElements = $("#note-elements");
-  const settingsElements = $("#settings-elements");
+  const settingsElements = $("#setting-container");
   const settingsButton = $("#settings-button");
   const homeButton = $("#home-button");
 
@@ -187,3 +187,45 @@ $(document).ready(function () {
   // Show note elements by default
   showNoteElements();
 });
+
+const toggleSetting = $("#toggle-setting");
+let settingState = false;
+
+// Toggle Setting
+toggleSetting.on("change", function () {
+  settingState = $(this).is(":checked");
+  // Do something based on the toggle state
+  if (settingState) {
+    // Toggle is ON
+    console.log("Setting is ON");
+  } else {
+    // Toggle is OFF
+    console.log("Setting is OFF");
+  }
+});
+
+// Clear Data Button
+// Clear Data Button
+const clearDataButton = $("#clear-data-button");
+
+clearDataButton.on("click", function () {
+  // Show confirmation dialog
+  showConfirmationDialog();
+});
+
+function showConfirmationDialog() {
+  const confirmDialog = confirm("Are you sure you want to clear all site data?");
+  if (confirmDialog) {
+    // User confirmed, clear the data
+    clearSiteData();
+  } else {
+    // User canceled, do nothing
+    return;
+  }
+}
+
+function clearSiteData() {
+  // Clear any relevant data or perform necessary actions
+  console.log("Clearing site data...");
+  // Implement your code to clear the site data here
+}

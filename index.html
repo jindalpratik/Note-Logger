@@ -35,21 +35,19 @@
       </form>
       <ul id="note-list"></ul>
     </div>
-    <div class="container" id="settings-elements">
-      <h2>Settings</h2>
-      <form id="settings-form">
-        <!-- Your settings inputs here -->
-        <div>
-          <label for="time-tagging">Time tagging:</label>
-          <select id="time-tagging" name="time-tagging">
-            <option value="date-time">Date & Time</option>
-            <option value="date">Date</option>
-          </select>
-        </div>
-        <button type="submit" id="save-settings-button">Save Settings</button>
-      </form>
+    <div class="container" id="setting-container">
+      <div class="settings">
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggle-setting">
+          <span class="slider"></span>
+        </label>
+        <p>Toggle Setting</p>
+      </div>
+      <div class="settings">
+        <button id="clear-data-button">Clear Data</button>
+      </div>
     </div>
-
+     
     <footer>
       <div class="container">
         <p>Version: v1.8.2</p>
