@@ -51,7 +51,8 @@ nav h2 {
 }
 
 /* Main Content */
-#note-elements, #setting-container {
+#note-elements,
+#setting-container {
   border-radius: 0px 0px 10px 10px;
 }
 
@@ -156,7 +157,6 @@ input[type="checkbox"]:checked + .slider:before {
   border-radius: 5px;
   padding: 5px;
 }
-
 
 #submit-button {
   background-color: #35547e;
