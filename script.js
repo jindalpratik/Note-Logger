@@ -13,7 +13,7 @@ if (localStorage.getItem("notes") !== null) {
     dates = JSON.parse(localStorage.getItem("dates"));
   }
   if (localStorage.getItem("dateTime") !== null) {
-    if(localStorage.getItem("dateTime") == 'true'){
+    if (localStorage.getItem("dateTime") == "true") {
       dateTime = true;
     } else {
       dateTime = false;
