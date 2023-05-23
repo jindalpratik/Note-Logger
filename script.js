@@ -232,18 +232,11 @@ function showConfirmationDialog() {
     "Are you sure you want to clear all site data?"
   );
   if (confirmDialog) {
-    // User confirmed, clear the data
-    clearSiteData();
+    toggleSetting[0].checked = false;
+    localStorage.clear();
+    window.location.reload();
+    console.log("Clearing site data...");
   } else {
-    // User canceled, do nothing
     return;
   }
-}
-
-function clearSiteData() {
-  // Clear any relevant data or perform necessary actions
-  toggleSetting[0].checked = false;
-  localStorage.clear();
-  window.location.reload();
-  console.log("Clearing site data...");
 }
