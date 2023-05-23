@@ -5,7 +5,7 @@ const noteList = $("#note-list");
 let notes = {};
 let dates = {};
 let id = 0;
-let dateTime;
+let dateTime = true;
 
 if (localStorage.getItem("notes") !== null) {
   notes = JSON.parse(localStorage.getItem("notes"));
@@ -212,12 +212,10 @@ toggleSetting.on("change", function () {
     // Toggle is ON
     dateTime = false;
     localStorage.setItem("dateTime", false);
-    console.log("Setting is ON");
   } else {
     // Toggle is OFF
     dateTime = true;
     localStorage.setItem("dateTime", true);
-    console.log("Setting is OFF");
   }
 });
 
@@ -244,6 +242,8 @@ function showConfirmationDialog() {
 
 function clearSiteData() {
   // Clear any relevant data or perform necessary actions
+  localStorage.clear();
+  window.location.reload();
   console.log("Clearing site data...");
   // Implement your code to clear the site data here
 }
