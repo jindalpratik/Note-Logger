@@ -5,7 +5,7 @@ const noteList = $("#note-list");
 let notes = {};
 let dates = {};
 let id = 0;
-let dateTime = true;
+let dateTime;
 
 if (localStorage.getItem("notes") !== null) {
   notes = JSON.parse(localStorage.getItem("notes"));
@@ -13,7 +13,12 @@ if (localStorage.getItem("notes") !== null) {
     dates = JSON.parse(localStorage.getItem("dates"));
   }
   if (localStorage.getItem("dateTime") !== null) {
-    dateTime = localStorage.getItem("dateTime");
+    if(localStorage.getItem("dateTime") == 'true'){
+      dateTime = true;
+    } else {
+      dateTime = false;
+    }
+    console.log(dateTime);
   }
   id = Number(localStorage.getItem("id"));
 }
@@ -184,6 +189,7 @@ $(document).ready(function () {
 
   // Handle home button click
   homeButton.on("click", function () {
+    window.location.reload();
     showNoteElements();
   });
 
@@ -197,7 +203,7 @@ $(document).ready(function () {
 });
 
 const toggleSetting = $("#toggle-setting");
-let settingState = false;
+let settingState = true;
 
 // Toggle Setting
 toggleSetting.on("change", function () {
@@ -205,14 +211,17 @@ toggleSetting.on("change", function () {
   // Do something based on the toggle state
   if (settingState) {
     // Toggle is ON
+    dateTime = false;
+    localStorage.setItem("dateTime", false);
     console.log("Setting is ON");
   } else {
     // Toggle is OFF
+    dateTime = true;
+    localStorage.setItem("dateTime", true);
     console.log("Setting is OFF");
   }
 });
 
-// Clear Data Button
 // Clear Data Button
 const clearDataButton = $("#clear-data-button");
 
