@@ -19,7 +19,7 @@
     <nav>
       <h2>Note Logger</h2>
       <div class="nav-buttons">
-        <button id="home-button"><i class="fas fa-home fa-xl"></i></button>
+        <button id="home-button" hidden="true"><i class="fas fa-home fa-xl"></i></button>
         <button id="settings-button"><i class="fas fa-cog fa-xl"></i></button>
       </div>
     </nav>
@@ -35,31 +35,29 @@
       </form>
       <ul id="note-list"></ul>
     </div>
-    <div class="container" id="settings-elements">
-      <h2>Settings</h2>
-      <form id="settings-form">
-        <!-- Your settings inputs here -->
-        <div>
-          <label for="theme">Theme:</label>
-          <select id="theme" name="theme">
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-          </select>
-        </div>
-        <div>
-          <label for="language">Language:</label>
-          <select id="language" name="language">
-            <option value="english">English</option>
-            <option value="spanish">Spanish</option>
-          </select>
-        </div>
-        <button type="submit" id="save-settings-button">Save Settings</button>
-      </form>
+    <div class="container" id="setting-container" hidden="true">
+      <div class="settings top-setting">
+        <p>Display only the creation date of notes, excluding the time:</p>
+        <label class="toggle-switch">
+          <input type="checkbox" id="dayDate-setting" />
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="settings">
+        <p>Confirm deletion of notes:</p>
+        <label class="toggle-switch">
+          <input type="checkbox" id="confirmDelete-setting" checked="true" />
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="settings bottom-setting">
+        <p class="setting-description">Clear all site data:</p>
+        <button id="clear-data-button">Clear Data</button>
+      </div>
     </div>
-
     <footer>
       <div class="container">
-        <p>Version: v1.8.2</p>
+        <p>Version: v2.0.0</p>
         <p>&copy; 2023 Note Logger. All rights reserved.</p>
       </div>
     </footer>

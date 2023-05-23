@@ -32,6 +32,7 @@ nav {
 nav h2 {
   padding: 5px;
   margin: 0;
+  color: #ffffff;
 }
 
 .nav-buttons {
@@ -51,7 +52,7 @@ nav h2 {
 
 /* Main Content */
 #note-elements,
-#settings-elements {
+#setting-container {
   border-radius: 0px 0px 10px 10px;
 }
 
@@ -60,7 +61,6 @@ h2 {
   font-weight: bold;
   margin-bottom: 20px;
   text-align: center;
-  color: #ffffff;
 }
 
 form {
@@ -83,6 +83,79 @@ textarea {
   margin-bottom: 10px;
   background-color: #f5f7fa;
   color: #333;
+}
+
+.settings {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid #aebacf;
+  background-color: #eff7ff;
+  padding: 5px;
+}
+
+.top-setting {
+  border-radius: 10px 10px 0 0;
+}
+
+.bottom-setting {
+  border-radius: 0px 0px 10px 10px;
+}
+
+.setting-description {
+  margin-right: 10px;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.toggle-switch input[type="checkbox"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input[type="checkbox"]:checked + .slider {
+  background-color: #2196f3;
+}
+
+input[type="checkbox"]:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+#clear-data-button {
+  background-color: #c12a00;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 #submit-button {
