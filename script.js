@@ -214,7 +214,9 @@ clearDataButton.on("click", function () {
 });
 
 function showConfirmationDialog() {
-  const confirmDialog = confirm("Are you sure you want to clear all site data?");
+  const confirmDialog = confirm(
+    "Are you sure you want to clear all site data?"
+  );
   if (confirmDialog) {
     // User confirmed, clear the data
     clearSiteData();
