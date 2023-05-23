@@ -1,14 +1,16 @@
-const noteForm = $("#note-form");
-const noteInput = $("#note-input");
-const noteList = $("#note-list");
-
+// All global variables which are in local storage.
 let notes = {};
 let dates = {};
 let id = 0;
 let dateTime = true;
 
+// Global variables not in local storage.
+let curEdit = [];
+
+// Retrieve all the varibales from browser storage.
 if (localStorage.getItem("notes") !== null) {
   notes = JSON.parse(localStorage.getItem("notes"));
+  id = Number(localStorage.getItem("id"));  
   if (localStorage.getItem("dates") !== null) {
     dates = JSON.parse(localStorage.getItem("dates"));
   }
@@ -19,7 +21,6 @@ if (localStorage.getItem("notes") !== null) {
       dateTime = false;
     }
   }
-  id = Number(localStorage.getItem("id"));
 }
 
 // Add notes after browser refresh.
@@ -27,9 +28,12 @@ $.each(notes, function (curId) {
   addNoteToUl(curId);
 });
 
-let curEdit = [];
 
+
+// Function to add the notes to list.
 function addNoteToUl(curId) {
+
+  // Initializing the list element and the text that goes in it.
   const li = $("<li>").attr("id", "li-" + curId);
   const p = $("<p>")
     .attr("id", "p-" + curId)
@@ -51,12 +55,14 @@ function addNoteToUl(curId) {
     .addClass("delete-button")
     .attr("id", "delete-" + curId);
 
-  // Adding the date to the note.
+  // Initializing the date element for the note.
   let curDate;
+
+  // Calculations for what date to add to the note.
   if (dateTime) {
     if (dates[curId] !== undefined) {
       curDate = new Date(dates[curId]).toLocaleString();
-    } else {
+    } else { // Set default date in case no date is available due to migration from an old to a new version of the site.
       dates[curId] = new Date();
       curDate = dates[curId].toLocaleString();
       localStorage.setItem("dates", JSON.stringify(dates));
@@ -74,7 +80,7 @@ function addNoteToUl(curId) {
   const editButtonIcon = $("<i>").addClass("fas fa-edit");
   const deleteButtonIcon = $("<i>").addClass("fas fa-trash-alt");
 
-  // Adding the note to the html with the buttons included.
+  // Adding the li element to note with all it's elements.
   editButton.append(editButtonIcon);
   deleteButton.append(deleteButtonIcon);
   div1.append(date).append(editButton).append(deleteButton);
@@ -82,61 +88,67 @@ function addNoteToUl(curId) {
   li.append(div2);
   li.append(p);
   li.append(textarea);
-  noteList.append(li);
+  $("#note-list").append(li);
 
-  // Clear input
-  noteInput.val("");
+  // Clear input.
+  $("#note-input").val("");
 }
 
 function addNote() {
-  // Get note text
-  const text = noteInput.val().trim();
+  // Get input text.
+  const text = $("#note-input").val().trim();
   if (text === "") {
     return;
   }
 
-  //Increment ID
+  // Update all the variables.
   id += 1;
-
-  // Add note to dictionary
   notes[id] = text;
   dates[id] = new Date();
 
   addNoteToUl(id);
 
-  //Store the notes in browser storage
+  // Update the variables in browser storage.
   localStorage.setItem("dates", JSON.stringify(dates));
   localStorage.setItem("notes", JSON.stringify(notes));
   localStorage.setItem("id", id);
 }
 
-noteForm.on("submit", function (event) {
+// Event listener for addition of new notes.
+$("#note-form").on("submit", function (event) {
   event.preventDefault();
   addNote();
 });
 
-// Delete note.
+// Event listener for deleting a note.
 $(document).on("click", ".delete-button", function () {
+
   const del_id = $(this).attr("id");
   const liId = "#li-" + del_id.substr(7);
+
+  // Deleting all the required elements and variables.
   $(liId).remove();
   delete notes[del_id.substr(7)];
   delete dates[del_id.substr(7)];
+
+  // Update the deleted variables in browser storage.
   localStorage.setItem("notes", JSON.stringify(notes));
   localStorage.setItem("dates", JSON.stringify(dates));
 });
 
+// Event listener for editing a note.
 $(document).on("click", ".edit-button", function () {
   const edit_id = $(this).attr("id");
   const id = edit_id.substr(5);
   const textareaId = "#textarea-" + id;
   const pId = "#p-" + edit_id.substr(5);
 
+  // Keep track of all the notes that in an edit state.
   if (curEdit.indexOf(Number(id)) == -1) {
     $(pId).hide();
     $(textareaId).val(notes[id]).show();
     curEdit.push(Number(id));
-  } else {
+  } else { // Update the note with the edited text.
     notes[id] = $(textareaId).val().trim();
     $(pId).show().text(notes[id]);
     $(textareaId).val("").hide();
@@ -144,6 +156,7 @@ $(document).on("click", ".edit-button", function () {
     curEdit.splice(remIndex, 1);
   }
 
+  // Update the variables in browser storage.
   localStorage.setItem("notes", JSON.stringify(notes));
 });
 
@@ -164,13 +177,14 @@ $(".no-tabs").on("keydown", function (e) {
   }
 });
 
+// Event listener for handling switching between the setting and the home page.
 $(document).ready(function () {
   const noteElements = $("#note-elements");
   const settingsElements = $("#setting-container");
   const settingsButton = $("#settings-button");
   const homeButton = $("#home-button");
 
-  // Show note elements and hide settings
+  // Show note elements and hide settings.
   function showNoteElements() {
     noteElements.show();
     settingsElements.hide();
@@ -178,7 +192,7 @@ $(document).ready(function () {
     homeButton.hide();
   }
 
-  // Show settings and hide note elements
+  // Show settings and hide note elements.
   function showSettings() {
     noteElements.hide();
     settingsElements.show();
@@ -201,25 +215,22 @@ $(document).ready(function () {
   showNoteElements();
 });
 
+// DateTime Settings.
 const toggleSetting = $("#toggle-setting");
 let settingState = true;
 
-// Toggle Setting
 toggleSetting.on("change", function () {
   settingState = $(this).is(":checked");
-  // Do something based on the toggle state
   if (settingState) {
-    // Toggle is ON
     dateTime = false;
     localStorage.setItem("dateTime", false);
   } else {
-    // Toggle is OFF
     dateTime = true;
     localStorage.setItem("dateTime", true);
   }
 });
 
-// Clear Data Button
+// Clear data Settings.
 const clearDataButton = $("#clear-data-button");
 
 clearDataButton.on("click", function () {
