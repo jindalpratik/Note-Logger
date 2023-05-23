@@ -242,6 +242,7 @@ function showConfirmationDialog() {
 
 function clearSiteData() {
   // Clear any relevant data or perform necessary actions
+  toggleSetting[0].checked = false;
   localStorage.clear();
   window.location.reload();
   console.log("Clearing site data...");
