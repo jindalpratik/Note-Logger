@@ -19,7 +19,7 @@ The Note Logger project aims to provide a user-friendly and intuitive platform f
 
 To access the Note Logger application, visit [https://note-logger.vercel.app/](https://note-logger.vercel.app/). Alternatively, you can follow the instructions below to run the project locally:
 
-1. Clone the repository: `git clone https://github.com/your-username/note-logger.git`
+1. Clone the repository: `git clone https://github.com/jindalpratik/note-logger.git`
 2. Navigate to the project directory: `cd note-logger`
 3. Open the `index.html` file in your preferred web browser.
 
